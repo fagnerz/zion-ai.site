@@ -1,0 +1,559 @@
+/* ==========================================
+   ZION AI SOLUTIONS - Coming Soon Page
+   ========================================== */
+
+/* --- CSS Variables --- */
+:root {
+    --bg-primary: #050816;
+    --bg-secondary: #0a0e27;
+    --text-primary: #e8eaf6;
+    --text-secondary: #8892b0;
+    --text-muted: #5a6380;
+    --accent-cyan: #00d4ff;
+    --accent-purple: #7b2ff7;
+    --accent-blue: #4361ee;
+    --accent-green: #00ff88;
+    --glass-bg: rgba(10, 14, 39, 0.6);
+    --glass-border: rgba(0, 212, 255, 0.1);
+    --glass-border-hover: rgba(0, 212, 255, 0.25);
+    --card-bg: rgba(10, 14, 39, 0.4);
+    --font-primary: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Animated Background --- */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-glow-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+    animation: floatGlow1 12s ease-in-out infinite;
+}
+
+.bg-glow-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(123, 47, 247, 0.1) 0%, transparent 70%);
+    bottom: -150px;
+    left: -100px;
+    animation: floatGlow2 15s ease-in-out infinite;
+}
+
+.bg-glow-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.06) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: floatGlow3 10s ease-in-out infinite;
+}
+
+@keyframes floatGlow1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-30px, 40px) scale(1.1); }
+    66% { transform: translate(20px, -20px) scale(0.95); }
+}
+
+@keyframes floatGlow2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.05); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes floatGlow3 {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+
+/* --- Particles --- */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    opacity: 0;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) scale(1);
+    }
+}
+
+/* --- Main Container --- */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: 100%;
+    padding: 60px 30px;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Logo Section --- */
+.logo-section {
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out 0.1s both;
+}
+
+.logo-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 24px;
+    position: relative;
+}
+
+.logo-icon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+}
+
+.node {
+    animation: nodePulse 3s ease-in-out infinite;
+}
+
+.node-1 { animation-delay: 0s; }
+.node-2 { animation-delay: 0.4s; }
+.node-3 { animation-delay: 0.8s; }
+.node-4 { animation-delay: 1.2s; }
+.node-5 { animation-delay: 0.2s; }
+.node-6 { animation-delay: 1.6s; }
+.node-7 { animation-delay: 0.6s; }
+.node-8 { animation-delay: 1.0s; }
+
+@keyframes nodePulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.connection {
+    animation: connectionPulse 4s ease-in-out infinite;
+}
+
+@keyframes connectionPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+.brand-name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-primary);
+}
+
+.brand-zion {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 12px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-cyan));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s ease-in-out infinite;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.brand-ai {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+}
+
+/* --- Divider --- */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px auto;
+    max-width: 300px;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border-hover), transparent);
+}
+
+.divider-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px rgba(0, 212, 255, 0.3);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* --- Coming Soon Section --- */
+.coming-soon-section {
+    margin-bottom: 50px;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--accent-cyan);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    animation: badgeDotPulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+@keyframes badgeDotPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.headline {
+    font-family: var(--font-primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* --- Features Grid --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.feature-card {
+    padding: 30px 20px;
+    border-radius: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.feature-card:hover {
+    border-color: var(--glass-border-hover);
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(0, 212, 255, 0.05);
+}
+
+.feature-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 16px;
+    padding: 10px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 247, 0.1));
+    color: var(--accent-cyan);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 47, 247, 0.2));
+    transform: scale(1.1);
+}
+
+.feature-card h3 {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* --- CTA Section --- */
+.cta-section {
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.cta-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(123, 47, 247, 0.12));
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.cta-button:hover {
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.cta-button:hover::before {
+    opacity: 1;
+}
+
+.cta-button svg {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover svg {
+    transform: translateX(4px);
+}
+
+/* --- Footer --- */
+.footer {
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 212, 255, 0.05);
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+.footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .brand-zion {
+        font-size: 2.5rem;
+        letter-spacing: 8px;
+    }
+
+    .brand-ai {
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+    }
+
+    .headline {
+        font-size: 1.7rem;
+    }
+
+    .description {
+        font-size: 0.95rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .feature-card {
+        padding: 24px 20px;
+    }
+
+    .bg-glow-1 {
+        width: 300px;
+        height: 300px;
+    }
+
+    .bg-glow-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .bg-glow-3 {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-zion {
+        font-size: 2rem;
+        letter-spacing: 6px;
+    }
+
+    .brand-ai {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+    }
+
+    .headline {
+        font-size: 1.4rem;
+    }
+
+    .logo-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .badge {
+        font-size: 0.65rem;
+        padding: 6px 14px;
+        letter-spacing: 2px;
+    }
+}
